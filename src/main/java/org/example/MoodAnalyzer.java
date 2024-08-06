@@ -12,10 +12,16 @@ public class MoodAnalyzer {
     }
 
     public String analyzeMood(){
-        message = message.toLowerCase();
-        if (message.contains("sad")){
-            return "Sad";
-        } else{
+        try {
+            message = message.toLowerCase();
+            if (message.contains("sad")) {
+                return "Sad";
+            } else if (message.contains("happy")) {
+                return "Happy";
+            } else {
+                return "";
+            }
+        } catch (NullPointerException e){
             return "Happy";
         }
     }
