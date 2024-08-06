@@ -6,15 +6,15 @@ public class MoodAnalyzerTest {
 
     @Test
     public void testMoodAnalysis() {
-        MoodAnalyzer moodAnalyzer = new MoodAnalyzer();
-        String mood = moodAnalyzer.analyzeMood("This is a sad message");
+        MoodAnalyzer moodAnalyzer = new MoodAnalyzer("This is a sad message");
+        String mood = moodAnalyzer.analyzeMood();
         Assert.assertEquals(mood, "Sad");
     }
 
     @Test
     public void result2() {
-        MoodAnalyzer mood1 = new MoodAnalyzer();
-        String result = mood1.analyzeMood("I am in happy mood");
+        MoodAnalyzer mood1 = new MoodAnalyzer("I am in happy mood");
+        String result = mood1.analyzeMood();
         Assert.assertEquals(result, "Happy");
     }
 }
