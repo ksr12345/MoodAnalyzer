@@ -3,6 +3,11 @@ package org.example;
 public class MoodAnalyzer {
 
     String message;
+
+    enum Mood{
+        Happy, Sad
+    }
+
     public MoodAnalyzer(){
 
     }
@@ -12,17 +17,31 @@ public class MoodAnalyzer {
     }
 
     public String analyzeMood(){
+        String result = "";
         try {
             message = message.toLowerCase();
-            if (message.contains("sad")) {
-                return "Sad";
-            } else if (message.contains("happy")) {
-                return "Happy";
-            } else {
-                return "";
+            if(message.equals("")) {
+                throw new MoodAnalyzerException("Empty Mood");
             }
-        } catch (NullPointerException e){
-            return "Happy";
+
+            if(message.contains("sad")) {
+                result= "Sad";
+            }
+            else if(message.contains("happy")) {
+                result = "Happy";
+            }
+            else {
+                result= "";
+            }
         }
+        catch(MoodAnalyzerException e) {
+            result = e.getMessage();
+        }
+
+        catch(NullPointerException f) {
+            result = "Null";
+        }
+
+        return result;
     }
 }
